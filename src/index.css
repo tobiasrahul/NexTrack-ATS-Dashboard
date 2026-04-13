@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --background: 140 15% 90%; /* Deeper Soft Green / Sage */
+    --foreground: 0 0% 10%; /* #1A1A1A - Charcoal */
+
+    --card: 37 30% 97%; /* Warm Sand tint for cards */
+    --card-foreground: 0 0% 10%;
+
+    --popover: 37 30% 97%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 80 84% 69%; /* #C9F270 - Neon Lime */
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 140 20% 86%; 
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 140 10% 84%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 80 84% 85%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 37 20% 90%;
+    --input: 37 20% 90%;
+    --ring: 80 84% 69%;
+
+    --radius: 2.5rem; /* Large rounded corners */
+  }
+
+  * {
+    @apply border-border font-["Plus_Jakarta_Sans",sans-serif];
+    letter-spacing: -0.01em;
+  }
+
+  body {
+    @apply bg-[hsl(140,15%,90%)] text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Glassmorphism Refined for Light Theme */
+.glass {
+  @apply bg-card/40 backdrop-blur-md border-white/40 shadow-sm transition-all;
+}
+
+.glass-panel {
+  @apply bg-card/80 backdrop-blur-xl border-white/60 shadow-[0_8px_32px_0_rgba(26,26,26,0.05)] transition-all;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1C9BC; 
+  border-radius: 10px;
+  border: 3px solid hsl(var(--background));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B1A99C; 
+}
+
+/* HopeRise Specific Layout Classes */
+.bento-card {
+  @apply bg-card rounded-[2.5rem] p-8 border-white/20 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.04)] transition-all duration-300 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.08)];
+}
+
+.pill-active {
+  @apply bg-[#C9F270] text-[#1A1A1A] font-bold shadow-md;
+}
+
