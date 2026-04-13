@@ -165,11 +165,7 @@ export const processCandidate = async (file: File, jobRole: string): Promise<Can
   // GNN score simulates deep understanding: heavily punishes context mismatches, deeply rewards true contextual depth
   const gnnScore = Math.min(100, Math.max(15, sbertScore - (contextMismatchPenalty * 1.2) + (overlapCount >= 5 ? 10 : overlapCount >= 3 ? 5 : -15) + (overlapCount > 10 ? 5 : 0))); 
   
-  // Calculate a higher-precision relevance score for tie-breaking
-  // Factor in absolute skill volume and semantic similarity
   const relevanceScore = (overlapCount * 50) + (sbertScore * 10) + (cosineScore * 5);
-
-  const matchedSkills = rankedSkills.slice(0, 7);
   
   let explanation = '';
   if (contextMismatchPenalty > 0) {
